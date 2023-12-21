@@ -2,12 +2,12 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 
-import { useContext} from "react";
+import { useContext } from "react";
 
 import { FcGoogle } from 'react-icons/fc';
 import { Authcontext } from "../../../Provider/Provider";
 
-const axios = require('axios');
+
 const Login = () => {
     // const [logerror, setlogerror] = useState('')
     const { signin, signgoogle } = useContext(Authcontext)
@@ -50,15 +50,15 @@ const Login = () => {
                             })
                         }
                     })
-                    // get access token
-                    const loggedinuser={email}
-                    axios.post('https://cosmetics-beauty-backend-mimjpskj0-shirin-sultanas-projects.vercel.app/jwt', loggedinuser)
-                      .then(function (response) {
+                // get access token
+                const loggedinuser = { email }
+                axios.post('https://cosmetics-beauty-backend-mimjpskj0-shirin-sultanas-projects.vercel.app/jwt', loggedinuser)
+                    .then(function (response) {
                         console.log(response);
-                      })
-                      .catch(function (error) {
+                    })
+                    .catch(function (error) {
                         console.log(error);
-                      });
+                    });
                 // navigate(location?.state ? location.state : '/')
 
 
@@ -70,15 +70,15 @@ const Login = () => {
 
                 if (errorMessage === "Firebase: Error (auth/invalid-login-credentials).")
                     // setlogerror("Invalid Credential");
-                Swal.fire({
-                    title: "Invalid Credential",
-                    showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    }
-                })
+                    Swal.fire({
+                        title: "Invalid Credential",
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    })
             });
     }
     const handlegoogle = () => {
@@ -122,59 +122,52 @@ const Login = () => {
 
     }
     return (
-        <div className='max-w-6xl mx-5 md:mx-auto my-10 h-[100vh]'>
-            <div className='text-center'>
-                <h2 className="text-2xl font-medium text-center mb-3">
-                    Customer Login
-                </h2>
-                <hr></hr>
-            </div>
 
-            <div >
-               
-                    <div className="card w-full md:w-1/2 ">
-                        <div className='w-full md:w-2/3 shadow-md bg-base-100 mx-auto'>
-                            <form onSubmit={handleloginform} className="card-body ">
-                                <div className='space-y-3'>
-                                    <h1 className="text-3xl font-bold">Login now!</h1>
-                                    <p>
-                                        Does not have an account? <Link to={'/register'} className='text-[#86198f] underline'>Sign Up</Link>
-                                    </p>
-
-                                </div>
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Email</span>
-                                    </label>
-                                    <input type="email" name='email' placeholder="email" className="input input-bordered" required />
-                                </div>
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Password</span>
-                                    </label>
-                                    <input type="password" name='password' placeholder="password" className="input input-bordered" required />
-
-                                </div>
-                                <div className="form-control mt-6">
-
-                                    <input className="btn text-white text-xl" style={{ backgroundImage: 'linear-gradient(to right, #f9a8d4, #e879f9)' }} type="submit" value="Sign in" />
-                                </div>
-
-                            </form>
-                            <hr className="my-5 mx-8"></hr>
-                            <div>
-                                <p className='text-center'>Or</p>
-                                <div className="my-5 mx-8">
-                                    <button onClick={handlegoogle} className="btn w-full text-[#e879f9] text-lg bg-white outline outline-[#e879f9]"><FcGoogle className="text-2xl"> </FcGoogle>Sign In With Google</button>
-                                </div>
-                            </div>
-
-                        </div>
+        <div className="card w-full my-8 ">
+            <div className='w-full md:w-2/3 shadow-md bg-base-100 mx-auto px-8 py-5'>
+            <div className='space-y-3'>
+                        <h1 className="text-3xl font-bold">Login now!</h1>
+                        <p>
+                            Does not have an account? <Link to={'/register'} className='text-[#86198f] underline'>Sign Up</Link>
+                        </p>
 
                     </div>
+                <div>
+                  
+                    <div className="mt-5 mx-8">
+                        <button onClick={handlegoogle} className="btn w-full text-[#e879f9] text-lg bg-white outline outline-[#e879f9]"><FcGoogle className="text-2xl"> </FcGoogle>Sign In With Google</button>
+                    </div>
                 </div>
+               
+                <hr className="mt-5 mx-8"></hr>
+                <form onSubmit={handleloginform} className="card-body ">
+                   
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Email</span>
+                        </label>
+                        <input type="email" name='email' placeholder="email" className="input input-bordered" required />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Password</span>
+                        </label>
+                        <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+
+                    </div>
+                    <div className="form-control mt-6">
+
+                        <input className="btn text-white text-xl" style={{ backgroundImage: 'linear-gradient(to right, #f9a8d4, #e879f9)' }} type="submit" value="Sign in" />
+                    </div>
+
+                </form>
+               
+
             </div>
-      
+
+        </div>
+
+
 
     );
 };
