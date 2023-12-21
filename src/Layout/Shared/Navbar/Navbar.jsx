@@ -30,12 +30,12 @@ const Navbar = () => {
         {
             user &&
             <>
-                <li className="mr-4"><NavLink to={'/'}>Add Product</NavLink></li>
+                <li className="mr-4"><NavLink to={'/dashboard'}>Task Management</NavLink></li>
 
             </>
         }
 
-        <li className="mr-4"><NavLink to={`/`}>My Cart</NavLink></li>
+        <li className="mr-4"><NavLink to={'/dashboard'}>Task Management</NavLink></li>
         <li className="mr-4"><NavLink to={`/`}>Create an Advertise</NavLink></li>
 
     </>

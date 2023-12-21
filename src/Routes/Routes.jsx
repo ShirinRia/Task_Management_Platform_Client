@@ -3,6 +3,9 @@ import Root from "../Layout/Root";
 import Home from "../Layout/Pages/Home/Home";
 import Login from "../Layout/Pages/Login/Login";
 import Register from "../Layout/Pages/Register/Register";
+import Dashboard from "../Layout/Dasboard/Dashboard";
+import Userprofile from "../Layout/Dasboard/Userprofile";
+import Addtask from "../Layout/Dasboard/Addtask";
 
 
 
@@ -33,7 +36,25 @@ const Routes = createBrowserRouter([
         ],
 
     },
-    
+    {
+        path: "dashboard",
+        element: <Dashboard />,
+        // errorElement: <Errorpage/>,
+        children: [
+            {
+                path: "profile",
+                element: <Userprofile />,
+            },
+            {
+                path: "addtask",
+                element: <Addtask />,
+            },
+           
+           
+
+        ],
+        // errorElement: <Errorpage></Errorpage>,
+    },
     
 ]);
 
