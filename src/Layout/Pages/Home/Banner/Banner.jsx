@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import banner from '../../../../assets/banner.jpg'
 
 
@@ -10,7 +11,7 @@ const Banner = () => {
                 </h3>
                 <p className='text-3xl'>Get Trained From</p>
                  {/* eslint-disable-next-line react/no-unescaped-entities */}
-                <button className='btn bg-[#e879f9] text-slate-100 text-xl '>Let's Explore</button>
+                <Link to={'/login'} className='btn bg-[#e879f9] text-slate-100 text-xl '>Let's Explore</Link>
             </div>
 
         </div>
