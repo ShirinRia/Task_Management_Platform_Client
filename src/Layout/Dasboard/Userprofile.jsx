@@ -5,6 +5,7 @@ import useAllusers from "../../Hooks/useAllusers";
 const Userprofile = () => {
     const { user } = useAuth()
     const [users] = useAllusers()
+    console.log(user)
     const thisuser = users.find(userr => userr?.email == user?.email)
 
     return (
@@ -13,8 +14,7 @@ const Userprofile = () => {
                 className="flex items-center justify-between mb-4"
             >
 
-                <h3 >{thisuser?.name}</h3>
-
+                <h3 className="text-3xl font-medium">{thisuser?.name}</h3>
 
                 <div className="avatar">
                     <div className="w-24 rounded-full">
@@ -35,7 +35,8 @@ const Userprofile = () => {
                 <input
                      className="input input-bordered w-full" 
 
-                    value={thisuser?.role}
+                    value={  thisuser?.createdAt
+                    }
                 />
                 <input
                      className="input input-bordered w-full" 

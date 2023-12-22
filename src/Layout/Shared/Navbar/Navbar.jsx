@@ -23,9 +23,9 @@ const Navbar = () => {
         <li className="mr-4"><NavLink to={'/'}>Home</NavLink></li>
     
             
-                <li className="mr-4"><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
+                <li className="mr-4"><NavLink to={'/dashboard/addtask'}>Dashboard</NavLink></li>
 
-        <li className="mr-4"><NavLink to={`/`}>About Us</NavLink></li>
+        <li className="mr-4"><NavLink to={`/about`}>About Us</NavLink></li>
 
     </>
     return (

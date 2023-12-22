@@ -8,6 +8,7 @@ import Userprofile from "../Layout/Dasboard/Userprofile";
 import Addtask from "../Layout/Dasboard/Addtask";
 import Tasklist from "../Layout/Dasboard/Prev_Task/Tasklist";
 import PrivateRoute from "./PrivateRoute";
+import Aboutus from "../Layout/Pages/About/Aboutus";
 
 const Routes = createBrowserRouter([
     {
@@ -29,6 +30,11 @@ const Routes = createBrowserRouter([
             {
                 path: "/signup",
                 element: <Register/>,
+                // loader:() =>fetch('/partnership.json'),
+            },
+            {
+                path: "/about",
+                element: <Aboutus/>,
                 // loader:() =>fetch('/partnership.json'),
             },
             
@@ -56,9 +62,6 @@ const Routes = createBrowserRouter([
             },
            
            
-           
-           
-
         ],
         // errorElement: <Errorpage></Errorpage>,
     },

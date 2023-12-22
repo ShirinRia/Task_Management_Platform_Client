@@ -1,13 +1,19 @@
 import { Link } from 'react-router-dom';
 import banner from '../../../../assets/banner.jpg'
 import useAuth from '../../../../Hooks/useAuth';
-
+// importing aos
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 const Banner = () => {
     const {user}=useAuth()
+    useEffect(() => {
+        AOS.init();
+      }, [])
     return (
         <div className='h-[80vh] bg-cover bg-no-repeat flex items-center px-16' style={{backgroundImage: `url(${banner})`, repeat:'no-repeat'}}>
-            <div className='space-y-4'>
+            <div data-aos={`fade-up`} data-aos-duration="2000" data-aos-easing="ease-in-sine" data-aos-delay="100" className='space-y-4'>
                 <h3 className='text-5xl'>
                 Streamlining Your Productivity Journey
                 </h3>
