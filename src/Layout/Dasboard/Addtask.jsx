@@ -2,33 +2,31 @@ import { useForm } from "react-hook-form"
 
 import Swal from 'sweetalert2'
 
-
-import useAuth from "../../Hooks/useAuth";
+// import useAuth from "../../Hooks/useAuth";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import useAxiossecure from "../../Hooks/useAxios/useAxiossecure";
-
+import useAxiospublic from "../../Hooks/useAxios/useAxiospublic";
 
 const Addtask = () => {
 
-    const url = `/classes`;
+    const url = `/assignments`;
 
-    const { user } = useAuth()
-    const axiosSecure =useAxiossecure()
+    // const { user } = useAuth()
+    const axiospublic =useAxiospublic()
     const navigate = useNavigate()
     const mutation = useMutation({
         mutationFn: (newTodo) => {
-            return axiosSecure.post(url, newTodo)
+            return axiospublic.post(url, newTodo)
                 .then(function (response) {
                     console.log(response);
                     if (response.data.insertedId) {
                         Swal.fire({
                             title: 'Success!',
-                            text: 'Your course has been added',
+                            text: 'Task Assigned',
                             icon: 'success',
                             confirmButtonText: 'OK'
                         })
-                        navigate('/dashboard/myclass')
+                        navigate('/dashboard/assignments')
                         reset()
                     }
                 })
@@ -52,20 +50,13 @@ const Addtask = () => {
 
     const onSubmit = async (data) => {
 
-        console.log(data)
-        const status = 'Pending'
         const title = data.title;
-        const name = data.name;
-        const email = data.email;
-        const userphoto = user.photoURL
-        const price = data.price;
         const description = data.description;
-        const photo = data.photo
-        const totalenrollment = 0
-        const newclass = { userphoto, title, name, email, price, description, status, photo, totalenrollment }
-        console.log(newclass)
-        mutation.mutate(newclass)
-
+        const deadline=data.deadline;
+        const priority = data.priority
+        const newtask = { deadline, title, description, priority }
+        console.log(newtask)
+        mutation.mutate(newtask)
 
     }
     return (
@@ -83,7 +74,6 @@ const Addtask = () => {
                         type="text"
                         {...register("title")}
                     />
-
 
                     <textarea
                         className="mb-4 w-full col-span-2 textarea-md textarea textarea-bordered"
@@ -120,10 +110,7 @@ const Addtask = () => {
                     type="submit">
                     Create Course
                 </button>
-
-
             </form>
-
         </div>
     );
 };

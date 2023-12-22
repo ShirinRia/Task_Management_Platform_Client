@@ -40,7 +40,7 @@ const Dashboard = () => {
                     </div>
                     <div className="flex items-center gap-2">
                     <FaTasks />
-                        <NavLink to={'/dashboard/addtask'} >
+                        <NavLink to={'/dashboard/tasklist'} >
 
                             <p style={{ color: 'white' }}> Previous Task</p>
                         </NavLink>

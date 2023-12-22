@@ -30,7 +30,7 @@ const Login = () => {
                     email,
                     lastloggedat: currentuser?.metadata?.lastSignInTime
                 }
-                fetch('https://cosmetics-beauty-backend-mimjpskj0-shirin-sultanas-projects.vercel.app/users',
+                fetch('http://localhost:5000/users',
                     {
                         method: 'PATCH',
                         headers: {
@@ -50,15 +50,7 @@ const Login = () => {
                             })
                         }
                     })
-                // get access token
-                const loggedinuser = { email }
-                axios.post('https://cosmetics-beauty-backend-mimjpskj0-shirin-sultanas-projects.vercel.app/jwt', loggedinuser)
-                    .then(function (response) {
-                        console.log(response);
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
+               
                 // navigate(location?.state ? location.state : '/')
 
 
@@ -128,7 +120,7 @@ const Login = () => {
             <div className='space-y-3'>
                         <h1 className="text-3xl font-bold">Login now!</h1>
                         <p>
-                            Does not have an account? <Link to={'/register'} className='text-[#86198f] underline'>Sign Up</Link>
+                            Does not have an account? <Link to={'/signup'} className='text-[#86198f] underline'>Sign Up</Link>
                         </p>
 
                     </div>

@@ -77,7 +77,7 @@ const Register = () => {
                         // Profile updated!
                         const newuserdata = { name, email, photo, createdAt: createat }
                         console.log(newuserdata);
-                        fetch('https://cosmetics-beauty-backend-mimjpskj0-shirin-sultanas-projects.vercel.app/users',
+                        fetch('http://localhost:5000/users',
                             {
                                 method: 'POST',
                                 headers: {

@@ -6,6 +6,7 @@ import Register from "../Layout/Pages/Register/Register";
 import Dashboard from "../Layout/Dasboard/Dashboard";
 import Userprofile from "../Layout/Dasboard/Userprofile";
 import Addtask from "../Layout/Dasboard/Addtask";
+import Tasklist from "../Layout/Dasboard/Tasklist";
 
 
 
@@ -48,6 +49,11 @@ const Routes = createBrowserRouter([
             {
                 path: "addtask",
                 element: <Addtask />,
+            },
+            
+            {
+                path: "tasklist",
+                element: <Tasklist />,
             },
            
            
