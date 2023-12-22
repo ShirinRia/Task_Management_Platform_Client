@@ -32,14 +32,14 @@ const Dashboard = () => {
                     </div>
 
                     <div className="flex items-center gap-2">
-                    <MdAddBox />
+                        <MdAddBox />
                         <NavLink to={'/dashboard/addtask'} >
 
                             <p style={{ color: 'white' }}> Add Task</p>
                         </NavLink>
                     </div>
                     <div className="flex items-center gap-2">
-                    <FaTasks />
+                        <FaTasks />
                         <NavLink to={'/dashboard/tasklist'} >
 
                             <p style={{ color: 'white' }}> Previous Task</p>
@@ -47,7 +47,7 @@ const Dashboard = () => {
                     </div>
 
                     <div className="flex items-center gap-2">
-                    <RiProfileFill />
+                        <RiProfileFill />
                         <NavLink to={'/dashboard/profile'} >
                             <p style={{ color: 'white' }}> Profile</p>
                         </NavLink>
@@ -65,9 +65,12 @@ const Dashboard = () => {
                 </ul>
             </div >
             {/* dashboard content */}
-            < div className="py-4 px-8 flex-grow w-3/5 md:w-full ">
-                <Outlet></Outlet>
-            </div >
+           
+                < div className="py-4 px-8 flex-grow w-3/5 md:w-full ">
+                    <Outlet></Outlet>
+                </div >
+          
+
         </div >
     );
 };
