@@ -21,16 +21,11 @@ const Navbar = () => {
     
     const links = <>
         <li className="mr-4"><NavLink to={'/'}>Home</NavLink></li>
-        {
-            user &&
-            <>
+    
+            
                 <li className="mr-4"><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
 
-            </>
-        }
-
-        <li className="mr-4"><NavLink to={'/dashboard'}>Task Management</NavLink></li>
-        <li className="mr-4"><NavLink to={`/`}>Create an Advertise</NavLink></li>
+        <li className="mr-4"><NavLink to={`/`}>About Us</NavLink></li>
 
     </>
     return (

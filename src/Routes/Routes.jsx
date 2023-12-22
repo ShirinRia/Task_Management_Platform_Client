@@ -7,6 +7,7 @@ import Dashboard from "../Layout/Dasboard/Dashboard";
 import Userprofile from "../Layout/Dasboard/Userprofile";
 import Addtask from "../Layout/Dasboard/Addtask";
 import Tasklist from "../Layout/Dasboard/Prev_Task/Tasklist";
+import PrivateRoute from "./PrivateRoute";
 
 const Routes = createBrowserRouter([
     {
@@ -37,7 +38,7 @@ const Routes = createBrowserRouter([
     },
     {
         path: "dashboard",
-        element: <Dashboard />,
+        element: <PrivateRoute><Dashboard /></PrivateRoute>,
         // errorElement: <Errorpage/>,
         children: [
             {
