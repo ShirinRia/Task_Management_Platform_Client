@@ -53,8 +53,9 @@ const Addtask = () => {
         const title = data.title;
         const description = data.description;
         const deadline=data.deadline;
-        const priority = data.priority
-        const newtask = { deadline, title, description, priority }
+        const priority = data.priority;
+        const status='to-do'
+        const newtask = { deadline, title, description, priority,status }
         console.log(newtask)
         mutation.mutate(newtask)
 

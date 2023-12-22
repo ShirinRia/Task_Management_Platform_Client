@@ -1,4 +1,5 @@
 
+import { useEffect, useState } from "react";
 import useTask from "../../../Hooks/useTask";
 import Tasks from "./Tasks";
 import { DndProvider } from 'react-dnd'
@@ -6,6 +7,19 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 const Tasklist = () => {
 
     const [tasks, refetch] = useTask();
+    const [todo,settodo]=useState([])
+    const [complete,setcomplete]=useState([])
+    const [inprogress,setinprogress]=useState([])
+   useEffect(()=>{
+    const filtered = tasks.filter(todotask => todotask.status === 'to-do')
+    settodo(filtered)
+   
+    const inprogressfiltered = tasks.filter(inprogresstask => inprogresstask.status === 'inprogress')
+    setinprogress(inprogressfiltered)
+    
+    const completefiltered = tasks.filter(completetask => completetask.status === 'complete')
+    setcomplete(completefiltered)
+   },[tasks])
     console.log(tasks)
     return (
         <DndProvider backend={HTML5Backend}>
@@ -13,7 +27,7 @@ const Tasklist = () => {
                 <div><h3 className="text-center bg-red-700 py-2 text-xl text-white">To-do Task</h3>
 
                     {
-                        tasks.map(task => <Tasks key={task} task={task}></Tasks>)
+                        todo.map(task => <Tasks key={task} task={task} refetch={refetch}></Tasks>)
                     }
 
                 </div>
@@ -22,7 +36,7 @@ const Tasklist = () => {
                 </h3>
 
                     {
-                        tasks.map(task => <Tasks key={task} task={task}></Tasks>)
+                        inprogress.map(task => <Tasks key={task} task={task} refetch={refetch}></Tasks>)
                     }
                 </div>
                 <div>
@@ -30,7 +44,7 @@ const Tasklist = () => {
                         Completed Task
                     </h3>
                     {
-                        tasks.map(task => <Tasks key={task} task={task}></Tasks>)
+                        complete.map(task => <Tasks key={task} task={task} refetch={refetch}></Tasks>)
                     }
                 </div>
             </div>
