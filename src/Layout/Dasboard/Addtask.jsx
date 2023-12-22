@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form"
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Swal from 'sweetalert2'
 
 // import useAuth from "../../Hooks/useAuth";
@@ -10,7 +11,7 @@ import useAxiospublic from "../../Hooks/useAxios/useAxiospublic";
 const Addtask = () => {
 
     const url = `/assignments`;
-
+    const notify = (deadline) => toast(`New Task Assigned. Deadline:${deadline}`);
     // const { user } = useAuth()
     const axiospublic =useAxiospublic()
     const navigate = useNavigate()
@@ -20,13 +21,14 @@ const Addtask = () => {
                 .then(function (response) {
                     console.log(response);
                     if (response.data.insertedId) {
-                        Swal.fire({
-                            title: 'Success!',
-                            text: 'Task Assigned',
-                            icon: 'success',
-                            confirmButtonText: 'OK'
-                        })
-                        navigate('/dashboard/tasklist')
+                        // Swal.fire({
+                        //     title: 'Success!',
+                        //     text: 'Task Assigned',
+                        //     icon: 'success',
+                        //     confirmButtonText: 'OK'
+                        // })
+                        notify(newTodo.deadline);
+                        // navigate('/dashboard/tasklist')
                         reset()
                     }
                 })
@@ -111,6 +113,7 @@ const Addtask = () => {
                     type="submit">
                     Create Course
                 </button>
+                <ToastContainer />
             </form>
         </div>
     );
