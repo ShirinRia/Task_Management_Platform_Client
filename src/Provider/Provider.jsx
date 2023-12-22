@@ -14,9 +14,7 @@ const Provider = ({ children }) => {
     const [user, setuser] = useState(null)
 
     const [loading, setloading] = useState(true)
-    // const [theme, settheme] = useState(false)
-
-
+   
     const createuser = (email, password) => {
         setloading(true)
         return createUserWithEmailAndPassword(auth, email, password)
@@ -74,8 +72,7 @@ const Provider = ({ children }) => {
         signin,
         signgoogle,
         loading,
-        // theme,
-        // settheme,
+       
     }
     return (
         <Authcontext.Provider value={authinfo}>

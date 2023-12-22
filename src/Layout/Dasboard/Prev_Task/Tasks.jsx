@@ -3,29 +3,39 @@ import { useState } from 'react';
 import { useDrag, useDrop } from 'react-dnd'
 import useAxiospublic from '../../../Hooks/useAxios/useAxiospublic';
 const Tasks = ({ task,refetch }) => {
+  console.log(Object.keys(task).length)
   // const{deadline,title,description,priority}=task;
   const [reff, setreff] = useState(false)
   const axiosPublic=useAxiospublic()
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "task",
-    drop: (item) => addItemtosection(item.id),
+    drop: (item) => addItemtosection(item.id,item.status),
     collect: (monitor) => ({
       isOver: !!monitor.isOver()
     })
   }))
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "task",
-    item: { id: task._id},
+    item: { id: task._id,
+    status:task.status},
    
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging()
     })
   }))
-  const addItemtosection = (id) => {
-    console.log("dropped", id)
+  const addItemtosection = (id,status) => {
+    console.log("dropped", status)
+    if(status==='to-do'){
+
+      status='inprogress'
+     }
+     else if(status==='inprogress'){
+      status='complete'
+     }
+    
     const olduser = {
       id,
-      status:'inprogress'
+      status
   }
     const url = `/assignments`;
     axiosPublic.patch(url, olduser)
@@ -45,23 +55,21 @@ const Tasks = ({ task,refetch }) => {
   console.log(reff)
   return (
 
-    <div>
+    <div ref={drop} className='border-2 '>
       {
-       <div ref={drag}  className={`${isDragging ? "opacity-5" : "opacity-100"}`}>
-        <ul className="py-2 px-4 bg-base-200 w-56 my-4">
-          <li>
-            <h3>{task.title}</h3>
-  
-          </li>
-  
-        </ul>
-       
-    </div>
-    
+      Object.keys(task).length===0 ? <p className="py-2 px-4 bg-base-200 w-full mt-2">Add Task</p>
+      :
+     
+      <ul ref={drag}  className={`${isDragging ? "opacity-5" : "opacity-100"} py-2 px-4 w-full bg-base-200  mt-2`}>
+        <li>
+          <h3>{task.title}</h3>
+
+        </li>
+
+      </ul>
      
       }
-       <div ref={drop} className="border-2 h-80">
-      </div>
+      
     </div>
 
 

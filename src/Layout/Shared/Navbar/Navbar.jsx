@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { Authcontext } from "../../../Provider/Provider";
 
 const Navbar = () => {
-    const { user, logout,  theme, settheme } = useContext(Authcontext)
+    const { user, logout } = useContext(Authcontext)
 
     const handlelogout = () => {
         logout()
@@ -18,19 +18,13 @@ const Navbar = () => {
             });
 
     }
-    const handletheme = () => {
-        // e.preventDeafault();
-
-        settheme(!theme)
-        console.log(theme)
-
-    }
+    
     const links = <>
         <li className="mr-4"><NavLink to={'/'}>Home</NavLink></li>
         {
             user &&
             <>
-                <li className="mr-4"><NavLink to={'/dashboard'}>Task Management</NavLink></li>
+                <li className="mr-4"><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
 
             </>
         }
@@ -52,17 +46,17 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                  
+                    <a className="btn btn-ghost text-xl">BdTasks</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className={`menu-horizontal px-1 ${theme ? "text-white" : ""}`}>
+                    <ul className={`menu-horizontal px-1 `}>
                         {links}
                     </ul>
                 </div>
                 <div className="md:navbar-end my-5 md:my-0">
                     {user ?
-                        <div className={`flex items-center gap-3 ${theme ? "text-white" : ""}`}>
-                            <div className="flex gap-2 items-center border-2 border-base-200 px-3 py-1 rounded-lg mr-28 md:mr-0">
+                        <div className={`flex items-center gap-3 `}>
+                            <div className="flex gap-2 items-center px-3 py-1 rounded-lg mr-28 md:mr-0">
                                 <div className="w-10 rounded-full">
                                     <img src={user.photoURL} className="w-full h-full rounded-full" />
 
@@ -75,13 +69,11 @@ const Navbar = () => {
                             <a onClick={handlelogout} href="/login" className="btn hover:text-white hover:bg-[#e879f9] ">Sign Out</a>
                         </div>
 
-                        : <Link to={'/login'} className="btn bg-[#e879f9] text-white hover:text-[#e879f9] hover:bg-white hover:outline hover:outline-offset-0 hover:outline-[#e879f9]"> Get Started </Link>
+                        : <Link to={'/login'} className="btn bg-[#e879f9]  hover:text-[#e879f9] hover:bg-white hover:outline hover:outline-offset-0 hover:outline-[#e879f9]"> Get Started </Link>
 
                     }
 
-                    <button onClick={handletheme} className="ml-5">
-                        <input type="checkbox" className="toggle" />
-                    </button>
+                  
 
                 </div>
             </div>

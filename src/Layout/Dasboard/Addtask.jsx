@@ -26,7 +26,7 @@ const Addtask = () => {
                             icon: 'success',
                             confirmButtonText: 'OK'
                         })
-                        navigate('/dashboard/assignments')
+                        navigate('/dashboard/tasklist')
                         reset()
                     }
                 })
